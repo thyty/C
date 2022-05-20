@@ -2,7 +2,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #define ok 1
-#define y 1
 struct PCB{
 	char name;
 	int arrtime;
@@ -19,7 +18,7 @@ typedef struct ready{
 PCB data;
 struct ready *next;
 }ready,*linklist;
-int create(linklist &L,int n)           //ÀûÓÃÎ²²å·¨´´½¨½ø³Ì
+int create(linklist &L,int n)           //åˆ©ç”¨å°¾æ’æ³•åˆ›å»ºè¿›ç¨‹
 {
  linklist p,r;
  int i;
@@ -28,10 +27,10 @@ int create(linklist &L,int n)           //ÀûÓÃÎ²²å·¨´´½¨½ø³Ì
  r=L;
  if(n<=0)
  {
- printf("ÇëÊäÈëÕıÕûÊı£¡\n");
+ printf("è¯·è¾“å…¥æ­£æ•´æ•°ï¼\n");
  return ERROR;
  }
- printf("ÇëÒÀ´ÎÊäÈë½ø³ÌÃû¡¢µ½´ïÊ±¼ä¡¢·şÎñÊ±¼ä\n");
+ printf("è¯·ä¾æ¬¡è¾“å…¥è¿›ç¨‹åã€åˆ°è¾¾æ—¶é—´ã€æœåŠ¡æ—¶é—´\n");
  for(i=0;i<n;i++)
  {
  p=(linklist)malloc(sizeof(ready));
@@ -125,8 +124,8 @@ int work(linklist &L,linklist p,int time)
 	p->data.startime=time;
 	p->data.stime=p->data.finishtime-p->data.arrtime;
 	p->data.astime=float(p->data.needtime)/p->data.stime;
-	printf("µ±Ç°Ê±¼ä%d ÕıÔÚÖ´ĞĞµÄ½ø³ÌÎª:%c\n",time,p->data.name);
-	printf("´ËÊ±¾ÍĞ÷¶ÓÁĞÎª:");
+	printf("å½“å‰æ—¶é—´%d æ­£åœ¨æ‰§è¡Œçš„è¿›ç¨‹ä¸º:%c\n",time,p->data.name);
+	printf("æ­¤æ—¶å°±ç»ªé˜Ÿåˆ—ä¸º:");
     print(time,L);
 	time=p->data.finishtime;
 	return time;
@@ -168,18 +167,18 @@ void FCFS(linklist &L)
  }
  printf("\n");
 }
-void show(linklist &L)           //Êä³öµ±Ç°¶ÓÁĞÖĞµÄ½ø³ÌµÄĞÅÏ¢
+void show(linklist &L)           //è¾“å‡ºå½“å‰é˜Ÿåˆ—ä¸­çš„è¿›ç¨‹çš„ä¿¡æ¯
 {
  linklist p;
  p=L->next;
  if(!p)
  {
- printf("Îª¿Õ£¡\n");
+ printf("ä¸ºç©ºï¼\n");
  printf("error");
  }
  while(p)
  {
- printf("½ø³ÌÃû µ½´ïÊ±¼ä ·şÎñÊ±¼ä \n");
+ printf("è¿›ç¨‹å åˆ°è¾¾æ—¶é—´ æœåŠ¡æ—¶é—´ \n");
  printf("%c\t %d\t  %d\n",p->data.name,p->data.arrtime,p->data.needtime);
  p=p->next;
  }
@@ -227,8 +226,8 @@ int work3(linklist &L,linklist p,int i,int time)
   if (p->data.rt==p->data.needtime)
     p->data.startime=time;
     p->data.rt-=1;
-	printf("µ±Ç°Ê±¼ä%d ÕıÔÚÖ´ĞĞµÄ½ø³ÌÎª:%c\n",time,p->data.name);
-	printf("´ËÊ±¾ÍĞ÷¶ÓÁĞÎª:");
+	printf("å½“å‰æ—¶é—´%d æ­£åœ¨æ‰§è¡Œçš„è¿›ç¨‹ä¸º:%c\n",time,p->data.name);
+	printf("æ­¤æ—¶å°±ç»ªé˜Ÿåˆ—ä¸º:");
     print2(time,L);
   time+=1;
   if (p->data.rt==0)
@@ -273,7 +272,7 @@ void showlist(linklist &L,int n)
  float aast=0;
  linklist p;
  p=L->next;
- printf("×÷ÒµÃû        µ½´ïÊ±¼ä        ·şÎñÊ±¼ä        ¿ªÊ¼Ê±¼ä        Íê³ÉÊ±¼ä        ÖÜ×ªÊ±¼ä         ´øÈ¨ÖÜ×ªÊ±¼ä\n");
+ printf("ä½œä¸šå        åˆ°è¾¾æ—¶é—´        æœåŠ¡æ—¶é—´        å¼€å§‹æ—¶é—´        å®Œæˆæ—¶é—´        å‘¨è½¬æ—¶é—´         å¸¦æƒå‘¨è½¬æ—¶é—´\n");
  while(p)
  {
 	 printf("%c\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%.2f\t\t\n",p->data.name,p->data.arrtime,p->data.needtime,p->data.startime,p->data.finishtime,p->data.stime,p->data.astime);
@@ -281,18 +280,18 @@ void showlist(linklist &L,int n)
 	 aast+=p->data.astime;
  p=p->next;
  }
- printf("Æ½¾ùÖÜ×ªÊ±¼äÎª:%.2f\t\t",float(ast/n));
-  printf("Æ½¾ù´øÈ¨ÖÜ×ªÊ±¼äÎª:%.2f\n",aast/n);
+ printf("å¹³å‡å‘¨è½¬æ—¶é—´ä¸º:%.2f\t\t",float(ast/n));
+  printf("å¹³å‡å¸¦æƒå‘¨è½¬æ—¶é—´ä¸º:%.2f\n",aast/n);
 }
 void prt()
 {
- printf("-------------------½ø³Ìµ÷¶È------------------\n");
- printf("                1.   ´´½¨½ø³Ì                \n");
- printf("                2. ÏÔÊ¾½ø³ÌĞÅÏ¢              \n");
- printf("                3.ÏÈÀ´ÏÈ·şÎñËã·¨             \n");
- printf("                4.·ÇÇÀÕ¼Ê½¶Ì×÷ÒµÓÅÏÈËã·¨             \n");
- printf("                5.×î¶ÌÊ£ÓàÊ±¼äÓÅÏÈËã·¨             \n");
- printf("                6.ÍË³ö                       \n");
+ printf("-------------------è¿›ç¨‹è°ƒåº¦------------------\n");
+ printf("                1.   åˆ›å»ºè¿›ç¨‹                \n");
+ printf("                2. æ˜¾ç¤ºè¿›ç¨‹ä¿¡æ¯              \n");
+ printf("                3.å…ˆæ¥å…ˆæœåŠ¡ç®—æ³•             \n");
+ printf("                4.éæŠ¢å å¼çŸ­ä½œä¸šä¼˜å…ˆç®—æ³•             \n");
+ printf("                5.æœ€çŸ­å‰©ä½™æ—¶é—´ä¼˜å…ˆç®—æ³•             \n");
+ printf("                6.é€€å‡º                       \n");
  printf("---------------------------------------------\n");
 }
 void main()
@@ -309,7 +308,7 @@ int n=0;
  {
  case 1:
   system("cls");
-  printf("ÇëÊäÈë½ø³ÌµÄ¸öÊı£º(±ØĞëÎªÕûÊı!!!)");
+  printf("è¯·è¾“å…¥è¿›ç¨‹çš„ä¸ªæ•°ï¼š(å¿…é¡»ä¸ºæ•´æ•°!!!)");
   scanf("%d",&n);
   printf("%d",n);
   create(L,n);
