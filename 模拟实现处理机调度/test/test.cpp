@@ -149,7 +149,6 @@ void SJP(linklist &L,int num)
   }
   if(!p)
 	 {time=time+1;}
-  printf("%d,%d",num,i);
  }
 }
 void FCFS(linklist &L)
@@ -310,7 +309,6 @@ int n=0;
   system("cls");
   printf("请输入进程的个数：(必须为整数!!!)");
   scanf("%d",&n);
-  printf("%d",n);
   create(L,n);
   sort(L);
   system("cls");
